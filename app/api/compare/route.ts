@@ -7,8 +7,6 @@ import { streamGemini } from '@/lib/llm-clients/gemini';
 import { streamMistral } from '@/lib/llm-clients/mistral';
 import { streamLlama } from '@/lib/llm-clients/llama';
 
-export const runtime = 'edge';
-
 async function* streamProvider(
   provider: LLMProvider,
   prompt: string,

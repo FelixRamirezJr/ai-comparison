@@ -7,7 +7,7 @@ export async function* streamMistral(prompt: string, apiKey: string) {
 
   try {
     const stream = await client.chat.stream({
-      model: 'mistral-large-latest',
+      model: process.env.MISTRAL_MODEL || 'mistral-large-latest',
       messages: [{ role: 'user', content: prompt }],
     });
 

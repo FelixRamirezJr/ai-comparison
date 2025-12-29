@@ -9,7 +9,7 @@ export async function* streamLlama(prompt: string, apiKey: string) {
       'X-Title': 'LLM Comparison App',
     },
     body: JSON.stringify({
-      model: 'meta-llama/llama-3.3-70b-instruct',
+      model: process.env.LLAMA_MODEL || 'meta-llama/llama-3.3-70b-instruct',
       messages: [{ role: 'user', content: prompt }],
       stream: true,
     }),

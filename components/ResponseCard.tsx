@@ -15,11 +15,11 @@ const providerColors: Record<string, string> = {
 };
 
 const providerNames: Record<string, string> = {
-  openai: 'OpenAI GPT-4o',
-  anthropic: 'Anthropic Claude 3.5 Sonnet',
-  gemini: 'Google Gemini 2.0 Flash',
-  mistral: 'Mistral Large',
-  llama: 'Meta LLaMa 3.3 70B',
+  openai: 'OpenAI',
+  anthropic: 'Anthropic Claude',
+  gemini: 'Google Gemini',
+  mistral: 'Mistral AI',
+  llama: 'Meta LLaMa',
 };
 
 export function ResponseCard({ response }: ResponseCardProps) {

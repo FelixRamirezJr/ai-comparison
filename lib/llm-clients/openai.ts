@@ -7,7 +7,7 @@ export async function* streamOpenAI(prompt: string, apiKey: string) {
 
   try {
     const stream = await openai.chat.completions.create({
-      model: 'gpt-5-nano-2025-08-07',
+      model: process.env.OPENAI_MODEL || 'gpt-5-nano-2025-08-07',
       messages: [{ role: 'user', content: prompt }],
       stream: true,
     });

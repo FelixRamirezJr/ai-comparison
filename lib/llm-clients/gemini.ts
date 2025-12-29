@@ -1,14 +1,23 @@
-import { GoogleGenerativeAI } from '@google/generative-ai';
+import { GoogleGenAI } from '@google/genai';
 
 export async function* streamGemini(prompt: string, apiKey: string) {
-  const genAI = new GoogleGenerativeAI(apiKey);
-  const model = genAI.getGenerativeModel({ model: 'gemini-2.0-flash-exp' });
+  const ai = new GoogleGenAI({ apiKey });
 
   try {
-    const result = await model.generateContentStream(prompt);
+    const stream = await ai.models.generateContentStream({
+      model: process.env.GEMINI_MODEL || 'gemini-2.0-flash-exp',
+      contents: prompt,
+      config: {
+        tools: [
+          {
+            googleSearch: {},
+          },
+        ],
+      },
+    });
 
-    for await (const chunk of result.stream) {
-      const text = chunk.text();
+    for await (const chunk of stream) {
+      const text = chunk.text;
       if (text) {
         yield text;
       }
